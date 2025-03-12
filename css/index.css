@@ -11,6 +11,14 @@
   --transition-fast: 0.2s;
 }
 
+/* 기본 오버플로우 처리 강화 */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1057,15 +1065,21 @@ body.menu-open {
   .fixed-socials {
     display: none;
   }
+
+  .fixed-social-link {
+    width: 32px; /* 크기 줄임 */
+    height: 32px;
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 768px) {
   .header {
-    padding: 20px;
+    padding: 15px; /* 헤더 패딩 줄임 */
   }
 
   .header.scrolled {
-    padding: 15px 20px;
+    padding: 10px 15px;
   }
 
   .nav-links {
@@ -1081,7 +1095,7 @@ body.menu-open {
   }
 
   .section {
-    padding: 80px 20px;
+    padding: 60px 15px; /* 좌우 패딩 줄임 */
   }
 
   .section-title {
@@ -1109,9 +1123,34 @@ body.menu-open {
   .banner-text p {
     font-size: 16px;
   }
+
+  /* 고정 소셜 링크 완전히 숨기기 전에 위치 조정 */
+  .fixed-socials {
+    right: 5px;
+  }
+
+  .fixed-social-link {
+    width: 30px;
+    height: 30px;
+    font-size: 9px;
+  }
+
+  /* 모바일 화면에서 텍스트 줄바꿈 처리 개선 */
+  .hero-title,
+  .section-title,
+  .parallax-content h2,
+  .contact-title {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
 }
 
 @media (max-width: 480px) {
+  .fixed-socials {
+    display: none !important; /* 확실하게 숨김 */
+  }
+
   .hero-title {
     font-size: 36px;
   }
@@ -1142,5 +1181,29 @@ body.menu-open {
 
   .footer-links {
     flex-wrap: wrap;
+  }
+
+  /* 모든 섹션의 좌우 패딩 더 줄임 */
+  .section,
+  .footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* 아티스트 카드 그리드 간격 줄임 */
+  .artists {
+    gap: 20px;
+  }
+
+  /* 헤더 패딩 더 줄임 */
+  .header,
+  .header.scrolled {
+    padding: 10px;
+  }
+
+  /* 배너 텍스트 위치 조정 */
+  .banner-text {
+    left: 10px;
+    width: 80%;
   }
 }
